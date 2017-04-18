@@ -79,7 +79,6 @@
 }
 
 - (void)done {
-    [self.recordEngine saveVideo];
     if (self.delegate && [self.delegate respondsToSelector:@selector(recordViewController:videoPath:)]) {
         [self.delegate recordViewController:self videoPath:self.recordEngine.videoPath];
     }

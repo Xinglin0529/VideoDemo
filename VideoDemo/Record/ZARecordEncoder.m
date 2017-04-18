@@ -68,7 +68,7 @@
             //音频输入是否准备接受更多的媒体数据
             if (_audioInput.readyForMoreMediaData) {
                 //拼接数据
-//                [_audioInput appendSampleBuffer:sampleBuffer]; 不录制声音
+//                [_audioInput appendSampleBuffer:sampleBuffer]; //不录制声音
                 return YES;
             }
         }
@@ -84,9 +84,9 @@
 
 - (void)za_setupVideoInputWithWidth:(NSInteger)width height:(NSInteger)height {
     //录制视频的一些配置，分辨率，编码方式等等
-    NSDictionary *compression = @{AVVideoAverageBitRateKey: @(128.0 * 1024.0 * 8),
-                                  AVVideoMaxKeyFrameIntervalKey: @(10),
-                                  AVVideoProfileLevelKey: AVVideoProfileLevelH264Main30};
+    NSDictionary *compression = @{AVVideoAverageBitRateKey: @(256.0 * 1024.0),
+                                  AVVideoMaxKeyFrameIntervalKey: @(100),
+                                  AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel};
     NSDictionary *settings = @{AVVideoCodecKey: AVVideoCodecH264,
                                AVVideoWidthKey: @(width),
                                AVVideoHeightKey: @(height),

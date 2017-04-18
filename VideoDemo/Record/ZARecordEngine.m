@@ -302,6 +302,7 @@
 - (AVCaptureSession *)recordSession {
     if (!_recordSession) {
         _recordSession = [[AVCaptureSession alloc] init];
+        _recordSession.sessionPreset = AVCaptureSessionPreset640x480;
         
         //优先获取前置摄像头输入,前置摄像头不可用，则使用后置摄像头
         AVCaptureDevice *captureDevice;
