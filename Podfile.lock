@@ -1,0 +1,15 @@
+PODS:
+  - Masonry (1.0.2)
+  - PBJVision (0.4.2)
+
+DEPENDENCIES:
+  - Masonry
+  - PBJVision
+
+SPEC CHECKSUMS:
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
+
+PODFILE CHECKSUM: 0de9b68a62b5ae33e2de7f11b761ec57c2306943
+
+COCOAPODS: 1.2.0
