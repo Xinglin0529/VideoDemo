@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readonly) AVCaptureConnection        *videoConnection;
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, copy, readonly) NSString *videoPath;
+@property (nonatomic, copy, readonly) NSString *videoName;
 
 /**
  启动录制功能

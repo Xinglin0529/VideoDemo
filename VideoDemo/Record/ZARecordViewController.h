@@ -12,7 +12,7 @@
 
 @protocol ZARecordViewControllerDelegate <NSObject>
 
-- (void)recordViewController:(ZARecordViewController *)record videoPath:(NSString *)videoPath;
+- (void)recordViewController:(ZARecordViewController *)record videoPath:(NSString *)videoPath videoName:(NSString *)videoName;
 
 @end
 

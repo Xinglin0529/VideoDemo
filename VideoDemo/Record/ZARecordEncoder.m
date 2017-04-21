@@ -84,7 +84,7 @@
 
 - (void)za_setupVideoInputWithWidth:(NSInteger)width height:(NSInteger)height {
     //录制视频的一些配置，分辨率，编码方式等等
-    NSDictionary *compression = @{AVVideoAverageBitRateKey: @(256.0 * 1024.0),
+    NSDictionary *compression = @{AVVideoAverageBitRateKey: @(256.0 * 1024.0 * 16),
                                   AVVideoMaxKeyFrameIntervalKey: @(100),
                                   AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel};
     NSDictionary *settings = @{AVVideoCodecKey: AVVideoCodecH264,

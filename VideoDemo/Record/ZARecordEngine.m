@@ -34,6 +34,7 @@
 @property (nonatomic, strong) AVCaptureAudioDataOutput   *audioOutput;//音频输出
 @property (nonatomic, assign) BOOL isCapturing;//正在录制
 @property (nonatomic, copy)   NSString *videoPath;
+@property (nonatomic, copy)   NSString *videoName;
 
 @end
 
@@ -146,7 +147,9 @@
         }
         if (!self.recordEncoder && !isVideo) {
             [self za_setupAudio:sampleBuffer];
-            self.videoPath = [[self za_videoCacheDirectoryPath:ZAVIDEO_ORIGINAL_VIDEO] stringByAppendingPathComponent:[self za_videoPath]];
+            NSString *videoName = [self za_videoName];
+            self.videoPath = [[self za_videoCacheDirectoryPath:ZAVIDEO_ORIGINAL_VIDEO] stringByAppendingPathComponent:videoName];
+            self.videoName = videoName;
             self.recordEncoder = [ZARecordEncoder encoderWithPath:self.videoPath width:_width height:_height channels:_channels sampleRate:_sampleRare];
         }
         [self.recordEncoder encode:sampleBuffer isVideo:isVideo];
@@ -259,8 +262,9 @@
     return path;
 }
 
-- (NSString *)za_videoPath {
-    NSString *timeStamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+- (NSString *)za_videoName {
+    NSInteger interval = (NSInteger)[[NSDate date] timeIntervalSince1970];
+    NSString *timeStamp = [NSString stringWithFormat:@"%ld", (long)interval];
     NSString *fileName = [NSString stringWithFormat:@"%@%@.mp4",ZAVIDEO_PREFIX, timeStamp];
     return fileName;
 }

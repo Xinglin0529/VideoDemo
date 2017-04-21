@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "ZARecordEngine.h"
 #import "ZARecordTimerView.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ZARecordViewController ()
 
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     [self za_setupSubviews];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,6 +52,12 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.recordEngine stopRunning];
+}
+
+#pragma mark - notification
+
+- (void)applicationDidEnterBackground:(NSNotification *)noti {
+    [self takeCamera];
 }
 
 #pragma mark - event
@@ -79,8 +87,8 @@
 }
 
 - (void)done {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(recordViewController:videoPath:)]) {
-        [self.delegate recordViewController:self videoPath:self.recordEngine.videoPath];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(recordViewController:videoPath:videoName:)]) {
+        [self.delegate recordViewController:self videoPath:self.recordEngine.videoPath videoName:self.recordEngine.videoName];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

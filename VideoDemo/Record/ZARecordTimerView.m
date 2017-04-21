@@ -48,7 +48,12 @@
 - (void)updateLabelText {
     NSInteger temp = self.timeInterval % 60;
     if (temp == 0) {
-        self.timeLabel.text = [NSString stringWithFormat:@"%ld:00", self.timeInterval / 60];
+        temp = self.timeInterval / 60;
+        if (temp >= 10) {
+            self.timeLabel.text = [NSString stringWithFormat:@"%ld:00", self.timeInterval / 60];
+        } else {
+            self.timeLabel.text = [NSString stringWithFormat:@"0%ld:00", self.timeInterval / 60];
+        }
     } else {
         if (self.timeInterval % 60 >= 10) {
             self.timeLabel.text = [NSString stringWithFormat:@"%ld:%ld", self.timeInterval / 60, self.timeInterval % 60];
